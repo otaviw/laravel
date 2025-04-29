@@ -33,5 +33,6 @@ Route::get('/calc/quadrado/{x}', [CalculosController::class, 'quadrado']);
 
 //keepinho
 Route::prefix('/keep')-> group(function () {
-    Route::get('/', [keepinhoController::class, 'index']);
+    Route::get('/', [keepinhoController::class, 'index'])->name('keep');
+    Route::post('/gravar', [keepinhoController::class,'gravar'])->name('keep.gravar');
 });
