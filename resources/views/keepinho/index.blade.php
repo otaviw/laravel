@@ -12,7 +12,9 @@
 @foreach ($notas as $nota)
     <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
         <div style="border: 2px solid plum; padding: 5px; border-radius: 3px; display: flex; align-items: center; justify-content: center; flex-direction: column; width: 50%">
-          {{$nota-> texto}}
+            {{$nota-> texto}}
+            <br>
+            <a href="{{ route('keep.editar', $nota->id) }}">Editar nota</a>
         </div>
     </div>
 @endforeach

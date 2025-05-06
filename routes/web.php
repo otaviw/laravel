@@ -35,4 +35,9 @@ Route::get('/calc/quadrado/{x}', [CalculosController::class, 'quadrado']);
 Route::prefix('/keep')-> group(function () {
     Route::get('/', [keepinhoController::class, 'index'])->name('keep');
     Route::post('/gravar', [keepinhoController::class,'gravar'])->name('keep.gravar');
+
+    Route::get('/editar/{nota}', [keepinhoController::class,'editar'])->name('keep.editar');
+    Route::put('/editar', [keepinhoController::class, 'editar'])->name('keep.editarGravar');
+
+    Route::delete('/apagar/{nota}', [keepinhoController::class,'apagar'])->name('keep.apagar');
 });
