@@ -5,14 +5,19 @@
     <div style="color:red; display: flex; align-items: center; justify-content: center; flex-direction: column;">
         <h3>Erro!</h3>
     </div>
+    <ul>
+        @foreach ($errors->all() as $err)
+            <li style="color:red; display: flex; align-items: center; justify-content: center; flex-direction: column;">{{ $err }}</li>
+        @endforeach
+    </ul>
 @endif
 
 <form action="{{ route('keep.gravar')}}" method="post" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
     @csrf
     <label for="titulo">Título:</label>
-    <input type="text" name="titulo">
+    <input type="text" name="titulo" value="{{ old('titulo') }}">
     <br>
-    <textarea name="texto" cols="30" rows="10" placeholder="Digite sua nota"></textarea>
+    <textarea name="texto" cols="30" rows="10" placeholder="Digite sua nota">{{ old('texto') }}</textarea>
     <br>
     <br>
     <input type="submit" value="Gravar nota">
