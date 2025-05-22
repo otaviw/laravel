@@ -1,42 +1,51 @@
-<h1 style="display: flex; align-items: center; justify-content: center; flex-direction: column;">🍍Bem Vindo ao Keepinho🍍</h1>
-<p style="display: flex; align-items: center; justify-content: center; flex-direction: column;">Sou o keepinho, o seu assistente pessoal (melhor do que o Google).</p>
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+<div class="container">
+    <header class="header">
+        <h1>🍍 Bem Vindo ao Keepinho 🍍</h1>
+        <p>Sou o keepinho, o seu assistente pessoal (melhor do que o Google).</p>
+    </header>
 
-@if($errors->any())
-    <div style="color:red; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-        <h3>Erro!</h3>
-    </div>
-    <ul>
-        @foreach ($errors->all() as $err)
-            <li style="color:red; display: flex; align-items: center; justify-content: center; flex-direction: column;">{{ $err }}</li>
-        @endforeach
-    </ul>
-@endif
+    <a href="{{ route('keep.lixeira') }}" class="btn btn-danger trash-link">🗑️ Lixeira</a>
 
-<form action="{{ route('keep.gravar')}}" method="post" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
-    @csrf
-    <label for="titulo">Título:</label>
-    <input type="text" name="titulo" value="{{ old('titulo') }}">
-    <br>
-    <textarea name="texto" cols="30" rows="10" placeholder="Digite sua nota">{{ old('texto') }}</textarea>
-    <br>
-    <br>
-    <input type="submit" value="Gravar nota">
-</form>
+    <hr>
 
-@foreach ($notas as $nota)
-    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
-        <div style="border: 2px solid plum; padding: 5px; border-radius: 3px; display: flex; align-items: center; justify-content: center; flex-direction: column; width: 50%">
-            {{$nota->titulo}}
-            <br>
-            {{$nota-> texto}}
-            <br>
-            <a href="{{ route('keep.editar', $nota->id) }}">Editar nota</a>
-            <br>
-            <form action="{{ route('keep.apagar', $nota->id) }}" method="post">
-                @method('DELETE')
-                @csrf
-                <input type="submit" value="Apagar">
-            </form>
+    @if($errors->any())
+        <div class="error-container">
+            <h3 class="error-title">Erro!</h3>
+            <ul class="error-list">
+                @foreach ($errors->all() as $err)
+                    <li>{{ $err }}</li>
+                @endforeach
+            </ul>
         </div>
+    @endif
+
+    <form action="{{ route('keep.gravar')}}" method="post" class="form-container">
+        @csrf
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" value="{{ old('titulo') }}">
+        </div>
+        <div class="form-group">
+            <textarea name="texto" placeholder="Digite sua nota">{{ old('texto') }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Gravar nota</button>
+    </form>
+
+    <div class="notes-container">
+        @foreach ($notas as $nota)
+            <div class="note-card">
+                <h3 class="note-title">{{$nota->titulo}}</h3>
+                <p class="note-content">{{$nota->texto}}</p>
+                <div class="note-actions">
+                    <a href="{{ route('keep.editar', $nota->id) }}" class="btn btn-secondary">Editar nota</a>
+                    <form action="{{ route('keep.apagar', $nota->id) }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Apagar</button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
     </div>
-@endforeach
+</div>

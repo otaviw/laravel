@@ -1,0 +1,374 @@
+/* Variáveis de cores - Dark Mode com Roxo/Rosa */
+:root {
+  --primary-color: #C77DFF; /* Roxo claro */
+  --primary-dark: #9D4EDD; /* Roxo mais escuro */
+  --secondary-color: #2EC4B6; /* Mantendo o turquesa para contraste */
+  --accent-color: #FF6D9E; /* Rosa acentuado */
+  --bg-color: #1A1A2E; /* Fundo mais claro que preto puro */
+  --surface-color: #16213E; /* Superfície escura azulada */
+  --text-primary: #F1F1F1; /* Branco suave */
+  --text-secondary: #B8B8B8; /* Cinza claro */
+  --card-color: #0F3460; /* Cor de card azul escuro */
+  --success-color: #2EC4B6; /* Mantendo o turquesa */
+  --warning-color: #FF9F1C; /* Laranja para alertas */
+  --error-color: #E94560; /* Vermelho rosado */
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  --border-radius: 10px; /* Bordas mais arredondadas */
+  --border-color: #2A2A4E;
+}
+
+/* Reset e estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.7;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Container principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Cabeçalho com gradiente */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  color: white;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 300;
+}
+
+/* Divisor estilizado */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--primary-color) 50%, transparent 100%);
+  margin: 30px 0;
+  opacity: 0.5;
+}
+
+/* Links com efeito neon */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--accent-color);
+  text-shadow: 0 0 8px rgba(199, 125, 255, 0.4);
+}
+
+/* Botão da lixeira */
+.trash-link {
+  padding: 12px 25px;
+  background-color: transparent;
+  border: 2px solid var(--error-color);
+  border-radius: var(--border-radius);
+  color: var(--error-color);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trash-link:hover {
+  background-color: var(--error-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+}
+
+/* Formulários futuristas */
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  padding: 30px;
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.form-group {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  backdrop-filter: blur(5px);
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(199, 125, 255, 0.2);
+  background-color: rgba(0,0,0,0.3);
+}
+
+textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+/* Botões com gradiente */
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(199, 125, 255, 0.4);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--error-color) 0%, #FF2E63 100%);
+  color: white;
+}
+
+.btn-danger:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #2EB6C4 100%);
+  color: white;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(46, 196, 182, 0.4);
+}
+
+/* Cards de notas com efeito de vidro */
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.note-card {
+  background: rgba(15, 52, 96, 0.6);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--primary-color);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(199, 125, 255, 0.1);
+}
+
+.note-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  border-color: rgba(199, 125, 255, 0.3);
+}
+
+.note-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.note-content {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.note-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Mensagens de erro estilizadas */
+.error-container {
+  background: rgba(233, 69, 96, 0.1);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 30px;
+  border-left: 5px solid var(--error-color);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(233, 69, 96, 0.2);
+}
+
+.error-title {
+  color: var(--error-color);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-list {
+  list-style: none;
+}
+
+.error-list li {
+  padding: 8px 0;
+  color: var(--error-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.error-list li:before {
+  content: "✖";
+  color: var(--error-color);
+}
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .notes-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn, .trash-link {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Efeitos especiais */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.header h1 {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Estilos específicos para a página da lixeira */
+.back-link {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.success-message {
+  background-color: rgba(46, 196, 182, 0.2);
+  color: var(--success-color);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+  text-align: center;
+  border-left: 4px solid var(--success-color);
+  font-weight: 500;
+}
+
+.deleted-notes-title {
+  color: var(--text-primary);
+  margin: 30px 0 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.deleted-notes-title:after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  margin: 10px auto 0;
+  border-radius: 3px;
+}
+
+.deleted-note {
+  border-left-color: var(--error-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.deleted-note:before {
+  content: "🗑️";
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 1.5rem;
+  opacity: 0.1;
+}
+
+.deleted-note .btn-primary {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+}
+
+.deleted-note .btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(157, 78, 221, 0.4);
+}

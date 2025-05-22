@@ -24,7 +24,7 @@ class keepinhoController extends Controller
     public function editar(Nota $nota, NotaRequest $request){
         if($request->isMethod('put')){
             $nota = Nota::find($request->id);
-            $nota->fill($request);
+            $nota->fill($request->all());
             $nota->save();
 
             return redirect()->route('keep');
@@ -35,6 +35,18 @@ class keepinhoController extends Controller
     public function apagar(Nota $nota){
         $nota->delete() ;
         return redirect()->route('keep');
+    }
+
+    public function lixeira(){
+        $notas = Nota::onlyTrashed()->get();
+
+        return view('keepinho.lixeira', ['notas'=> $notas]);
+    }
+
+    public function restaurar($nota){
+        $nota= Nota::withTrashed()->find($nota);
+        $nota->restore();
+        return redirect()->route('keep.lixeira')->with('sucesso','Nota restaurada com sucesso!');
     }
 
 }

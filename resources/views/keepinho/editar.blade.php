@@ -1,26 +1,34 @@
-<h1 style="display: flex; align-items: center; justify-content: center; flex-direction: column;">🍍Bem Vindo ao Keepinho🍍</h1>
-<p style="display: flex; align-items: center; justify-content: center; flex-direction: column;">Sou o keepinho, o seu assistente pessoal (melhor do que o Google).</p>
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+<div class="container">
+    <header class="header">
+        <h1>🍍 Bem Vindo ao Keepinho �</h1>
+        <p>Essa é sua super página de edição</p>
+    </header>
 
-@if($errors->any())
-    <div style="color:red; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-        <h3>Erro!</h3>
-    </div>
-    <ul>
-        @foreach ($errors->all() as $err)
-            <li style="color:red; display: flex; align-items: center; justify-content: center; flex-direction: column;">{{ $err }}</li>
-        @endforeach
-    </ul>
-@endif
+    <hr>
 
-<form action="{{ route('keep.editarGravar')}}" method="post" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
-    @method('PUT')
-    @csrf
-    <label for="titulo">Título:</label>
-    <input type="hidden" name="id" value="{{ $nota->id }}">
-    <input type="text" name="titulo" value="{{ old('titulo', $nota->titulo) }}">
-    <br>
-    <textarea name="texto" cols="30" rows="10">{{ old('nota', $nota->texto) }}</textarea>
-    <br>
-    <br>
-    <input type="submit" value="Editar nota">
-</form>  
+    @if($errors->any())
+        <div class="error-container">
+            <h3 class="error-title">Erro!</h3>
+            <ul class="error-list">
+                @foreach ($errors->all() as $err)
+                    <li>{{ $err }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('keep.editarGravar')}}" method="post" class="form-container">
+        @method('PUT')
+        @csrf
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="hidden" name="id" value="{{ $nota->id }}">
+            <input type="text" name="titulo" value="{{ old('titulo', $nota->titulo) }}">
+        </div>
+        <div class="form-group">
+            <textarea name="texto" cols="30" rows="10">{{ old('nota', $nota->texto) }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Editar nota</button>
+    </form>
+</div>
